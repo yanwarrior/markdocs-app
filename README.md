@@ -3,9 +3,6 @@
 Markdocs is an application to create a personal document with a markdown format.
 Its built with angularjs. This version has not used Rest.
 
-## License
-MIT
-
 ## How To Use ?
 If you want to run this application. You need to install bower and node js. Use bower to install the dependencies required by this app. Using node js to build the server. Alternatively, you can use Python.
 
@@ -59,6 +56,3 @@ Markdown Preview:
 
 ## License
 [MIT](/LICENSE.md)
-
-
-
