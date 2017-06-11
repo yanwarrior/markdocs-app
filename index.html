@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="Markdocs">
+<head>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/marked/lib/marked.js"></script>
+	<script src="bower_components/angular-marked/dist/angular-marked.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script type="text/javascript" src="static/js/app.js"></script>
+	<script type="text/javascript" src="static/js/services/DocServices.js"></script>
+	<script type="text/javascript" src="static/js/controllers/DocController.js"></script>
+	<script type="text/javascript" src="static/js/directives/DocDirectives.js"></script>
+	<title>Markdown Document App</title>
+
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<link rel="stylesheet" type="text/css" href="static/css/app.css">
+</head>
+<body>
+
+<div class="container" ng-controller="DocController as main">
+	<h2 class="page-header">Markdocs</h2>
+	<p>
+		<a href="#" class="btn btn-success btn-xs" ng-click='main.createDoc()'>
+			<span class="glyphicon glyphicon-plus"></span>
+		</a>
+	</p>
+	<listdoc class='callout' ng-repeat="doc in main.docs" ng-click="main.setCurrentDoc(doc)"></listdoc>
+
+	<!-- Modal -->
+	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" 
+						contenteditable="true" 
+						document 
+						data-directive 
+						ng-model="main.currentDoc.title" id="myModalLabel">{{ main.currentDoc.title }}</h4>
+				</div>
+				<p>
+					<div class="mytabsmarkdown">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active">
+								<a href="#markdown" aria-controls="markdown" role="tab" data-toggle="tab">Markdown</a>
+							</li>
+							<li role="presentation">
+								<a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Preview</a>
+							</li>
+						</ul>
+
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="markdown">
+								<form>
+									<div class="form-group">
+										<textarea rows="10" class="form-control" ng-model="main.currentDoc.post"></textarea>
+									</div>
+								</form>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="preview">
+								<div class="container-fluid">
+									<p style="margin: 5px;" class="row" marked="main.currentDoc.post"></p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</p>
+
+				<!-- TODO: tanggal belum bisa diubah -->
+				<!-- TODO: tanggal masih error dalam status nonassign karena penggunaan filter date -->
+				<div class="modal-footer">
+					<span class="label label-default" 
+						contenteditable="true" 
+						document 
+						data-directive 
+						ng-model="main.currentDoc.created">{{ main.currentDoc.created }}</span>
+
+					<span class="label label-success" 
+						contenteditable="true" 
+						document 
+						data-directive 
+						ng-model="main.currentDoc.author">{{ main.currentDoc.author }}</span>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
+
+
