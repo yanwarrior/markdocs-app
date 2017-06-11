@@ -48,17 +48,17 @@ You can access url `Local` or `On Your Network` using browser.
 
 ## Preview
 List all documents:
-[](docs/preview01.png)
+![preview01](/docs/preview01.png)
 
 Markdown Format:
-[](docs/preview02.png)
+![preview02](/docs/preview02.png)
 
 Markdown Preview:
-[](docs/preview03.png)
+![preview03](/docs/preview03.png)
 
 
 ## License
-MIT
+[MIT](/LICENSE.md)
 
 
 
